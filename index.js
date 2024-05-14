@@ -15,19 +15,20 @@ const path = require("path");
 const app = express();
 
 app.use(
-  cors()
-  //   {
-  //   origin: "https://emp-dashboard-client.vercel.app/",
-  // }
+  cors(
+     {
+     origin: "https://ashoshari.github.io",
+   }
+    )
 );
 
-// app.use((req, res, next) => {
-//   res.setHeader(
-//     "Access-Control-Allow-Origin",
-//     "https://emp-dashboard-client.vercel.app/"
-//   );
-//   res.setHeader("Acces-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
-// });
+ app.use((req, res, next) => {
+   res.setHeader(
+     "Access-Control-Allow-Origin",
+     "https://ashoshari.github.io"
+   );
+   res.setHeader("Acces-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
+ });
 
 require("dotenv").config();
 const fs = require("fs");
