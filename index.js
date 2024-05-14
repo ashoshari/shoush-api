@@ -14,21 +14,19 @@ const upload = require("./multer");
 const path = require("path");
 const app = express();
 
-app.use(
-  cors(
-     {
-     origin: "https://ashoshari.github.io",
-   }
-    )
-);
+app.use(cors({ origin: ["https://ashoshari.github.io","http://localhost:5173"] }));
 
- app.use((req, res, next) => {
-   res.setHeader(
-     "Access-Control-Allow-Origin",
-     "https://ashoshari.github.io"
-   );
-   res.setHeader("Acces-Control-Allow-Methods", "GET, POST, PATCH, DELETE");
- });
+
+app.use(function (req, res, next) {
+
+    // Website you wish to allow to connect
+    res.setHeader('Access-Control-Allow-Origin', 'https://ashoshari.github.io');
+
+    // Request methods you wish to allow
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
+
+    next();
+});
 
 require("dotenv").config();
 const fs = require("fs");
