@@ -143,7 +143,7 @@ const getEmpReport = async (req, res) => {
         },
       },
     ]).exec(function (err, employee) {
-      if (!employee[0].report[0]) return res.status(404).json(null);
+      if (!employee[0].report[0]) return res.status(404).json(err);
 
       const absentDays = Math.floor(
         vacationCount.numberOfDays + vacationCount.numberOfHours
